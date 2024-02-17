@@ -1,0 +1,46 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  
+}
+body{
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+.navbar{
+    height: 90px;
+}
+a.logo{
+    margin-top: -8px;
+    margin-left: -12px;
+}
+.navbar a{
+    align-items: center;
+    text-align:center;
+   
+}
+a.icon-link {
+    color: aliceblue;
+    margin-top: -70px;
+    text-decoration: solid;
+}
+.bi-box-arrow-right{
+    margin-bottom: 5px;
+}
+footer{
+    padding: 20px;
+    position: absolute;
+    height: 60px;
+}
+
+/*responsive css styles */
+@media only screen and (max-width: 600px) {
+    .navbar {
+        height: 89px !important;
+    }
+    a{
+        display: flex;
+        
+    }
+  }
