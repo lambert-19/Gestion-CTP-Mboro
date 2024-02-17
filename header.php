@@ -15,7 +15,7 @@
 
 
 
-<nav class="navbar sticky-top bg-dark">
+<nav class="navbar fixed-top navbar-expand-lg bg-dark">
     <div class="container-fluid">
 
     <a class="logo " href="Home.php">
@@ -38,7 +38,7 @@
 
     </form>
 
-<footer class="fixed-bottom bg-dark">
+<footer class=" bg-dark">
 <div class="container "></div>
 
 

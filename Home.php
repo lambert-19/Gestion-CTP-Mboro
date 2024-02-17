@@ -37,7 +37,7 @@
     <a href="addStudent.php"><div class="frame p-4 "><i class="bi bi-person-plus-fill "></i><p>Ajouter un élève</p> </div></a>
     </div>
     <div class="col-3">
-     <a href=""><div class="frame p-4 "><i class="bi bi-person-fill"></i> <p>liste des élèves </p></div></a> 
+     <a href="listedeseleves.php"><div class="frame p-4 "><i class="bi bi-person-fill"></i> <p>liste des élèves </p></div></a> 
     </div>
     <div class="col-3">
      <a href=""> <div class="frame p-4 "><i class="bi bi-person-plus-fill "></i><p>Ajouter un élève</p></div> </a> 
