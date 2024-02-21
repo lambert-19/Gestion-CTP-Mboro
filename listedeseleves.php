@@ -126,17 +126,7 @@ if(isset($_POST['submit'])){
      <?php
      
     include('server/db_connect.php');
-    /*
-$count =$pdo->prepare("SELECT COUNT(id) as cnt FROM students");
-$count ->setFetchMode(PDO::FETCH_ASSOC);
-$count->execute();
-$tcount=$count->fetchAll();
 
-//pagination
-    $limit=30;
-    $number_of_pages=ceil($tcount[0]["cnt"]/$limit);
-echo $number_of_pages;
-*/
 // retrieve data from the database
     $i=1;
     $sql="SELECT * FROM students ORDER BY nom ASC ";
