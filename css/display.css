@@ -2,7 +2,17 @@
     margin: 0;
     scroll-behavior: smooth;
 }
-
+body{
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    padding-bottom: 70px;
+}
+main{
+    margin-top:80px;
+    padding: 40px;
+    margin-bottom: 250px;
+}
 .items p{
     margin-left: 15px;
     text-transform: capitalize;
@@ -16,3 +26,47 @@
     font-size: 1em;
     color:dimgray;
 }
+footer{
+    padding: 20px;
+    position:absolute;
+    height: 60px;
+    background-color: black;
+    bottom: 0;
+    width:100% ;
+    
+}
+.information{
+    margin-bottom: 50px;
+}
+/*responsive css styles */
+@media only screen and (max-width: 600px) {
+    .navbar {
+        height: 89px !important;
+    }
+    
+    .logout{
+        display:inline-block;
+        right:0;
+        
+    }
+    
+    a{
+        display:inline-block;
+        right: 0;
+        
+    }
+    .main{
+        margin-top:10px ;
+    }
+    .information{
+        margin-top: 40px;
+    }
+    footer{
+        padding: 20px;
+        position:absolute;
+        height: 60px;
+        background-color: black;
+        bottom: 0;
+        width:100% ;
+    }
+  }

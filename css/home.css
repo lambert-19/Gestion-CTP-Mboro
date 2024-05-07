@@ -6,6 +6,7 @@
 
 body{
     scroll-behavior: smooth;
+    
 }
 
 main{
@@ -14,16 +15,18 @@ main{
     display:block;
     align-items: center;
     justify-content: space-between;
-    
+    overflow: hidden;
 }
-
+#aside{
+    color: blue;
+}
 .frame{
     box-sizing: border-box;
     box-shadow: 10px 5px 5px red;
     border: solid 1px black;
     justify-content: center;
     height: 200px;
-    width: 250px;
+    width: 200px;
     box-shadow: 0 40px 80px #FBE4E0;
     border-radius: 14px;
     display: flex;
@@ -33,7 +36,8 @@ main{
 
 .row{
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    flex-direction: row;
 }
 .row a{
     align-items: center;
@@ -62,7 +66,7 @@ main{
     
 }
 .container{
-    margin-top: 100px;
+    margin-top: 200px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -70,13 +74,41 @@ main{
 .row i.bi{
     font-size:xx-large;
 }
+footer{
+    padding: 20px;
+    position:absolute;
+    height: 60px;
+    background-color: black;
+    bottom: 0;
+    width:100% ;
+}
 
 @media only screen and (max-width: 600px) {
 .frame{
     display:flex;
     align-items: center;
     justify-content: center;
-    margin-top: 100px;
-
+    margin-top: 30px;
+    flex-direction:column;
+   
+}
+.carte{
+    align-items: center;
+    justify-content: center;
+    margin-right: 50%;
+    margin-top: -30px;
+}
+.row{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 100px;
+    
+   
+}
+.logout{
+    display:inline-block;
+    right:0;
+    
 }
 }

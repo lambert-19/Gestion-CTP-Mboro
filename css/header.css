@@ -9,6 +9,7 @@ body{
     font-family: 'Poppins', sans-serif;
     position: relative;
     padding-bottom: 70px;
+    min-height: 100vh;
 }
 .navbar{
     height: 80px;
@@ -29,25 +30,100 @@ a.icon-link {
     margin-top: -70px;
     text-decoration: solid;
 }
+
 .bi-box-arrow-right{
     margin-bottom: 5px;
 }
-footer{
-    padding: 20px;
-    position:absolute;
-    height: 60px;
-    background-color: black;
-    bottom: 0;
-    width:100% ;
-}
+.logout{
+    right:0;
+    display:inline-block;
+    margin-left:700px;
+    margin-top:80px;
 
+}
+.navbar-toggler{
+    width:40px;
+    height:20px;
+    position:relative;
+    transition:.5s ease-in-out;
+}
+.navbar-toggler,
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus{
+    outline:none;
+    box-shadow:none;
+    border:0;
+}
+.navbar-toggler span{
+    margin:0;
+    padding:0;
+}
+.toggler-icon{
+    display:block;
+    position:absolute;
+    height: 3px;
+    width: 100%;
+    background: #d3531a;
+    border-radius: 1px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+.middle-bar{
+    margin-top: 0;
+}
+.navbar-toggler .top-bar{
+    margin-top: 0px;
+    transform:rotate(135deg);
+}
+.navbar-toggler .middle-bar{
+    opacity: 0;
+    filter:alpha(opacity=100);
+}
+.navbar-toggler .bottom-bar{
+    margin-top: 0;
+    transform:rotate(-135deg);
+}
+.navbar-toggler.collapsed .top-bar{
+    margin-top: -20px;
+    transform: rotate(0deg);
+}
+.navbar-toggler.collapsed .middle-bar{
+    opacity: 1;
+    filter:alpha(opacity=100);
+
+}
+.navbar-toggler.collapsed .bottom-bar{
+    margin-top:20px;
+    transform:rotate(0deg);
+}
 /*responsive css styles */
 @media only screen and (max-width: 600px) {
     .navbar {
         height: 89px !important;
     }
+   
+    .btn-outline-success{
+        margin-top: 10px;
+        justify-content: center;
+        width: 250px;
+        align-items: center;
+        margin-left: 70px;
+        margin-top: 20px;
+    }
+    
     a{
-        display: flex;
+        display:inline-block;
+        right: 0;
         
     }
+    .collapse{
+        width: 150px;
+        height: 80px;
+        margin-top: -1px;
+    }
+   
+    
   }

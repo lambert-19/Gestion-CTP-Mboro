@@ -31,28 +31,26 @@ table{
   gap: 2px;
 }
 
+@media only screen and (max-width: 600px) {
+
+  .form-controlsearch{
+    margin-top:10px;
+  }
+  .chercher .btn .btn-outline-primary{
+    width:40px;
+    right:0;
+  }
+
+
+}
+
 </style>
 <body >
 <header>
             <!-- place navbar here -->
         <?php include 'header.php';?>
         </header>
-<?php
-// create pagination
-include_once('server/db_connect.php');
 
-$num_page=05;
-
-
-if(isset($_GET["pages"])){
-  $page=$_GET["pages"];
-}else{
-  $page=1;
-}
-$start_from=($page-1)*05;
-$pagination="SELECT * FROM students limit $start_from,$num_page";
-$rs=mysqli_query($conn,$pagination);
-?>
 
         <main class="min-vh-100 mt-5 pt-5   ">
 
@@ -63,22 +61,14 @@ $rs=mysqli_query($conn,$pagination);
 
 
 
-    <form class="d-flex align-content-end  " role="search" >
+    <form class="searching  " role="search" >
       <input class="form-controlsearch ms-5" type="search" name="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" name="submit" type="submit">Search</button>
+      <button class="chercher btn btn-outline-primary" name="submit" type="submit">Search</button>
     </form>
-<br>
-    <?php
-$sqlo="SELECT * FROM students";
-$rs_result=mysqli_query($conn,$sqlo);
-$total_rows=mysqli_num_rows($rs_result);
-$total_pages =ceil(($total_rows/$num_page)) ;
 
-for($j=1;$j<=$total_pages;$j++){
-  echo "<a class='pages' href='listedeseleves.php?pages=".$j."'>".$j."</a>";
-}
+    
 
-?>
+
 
 
      <thead class="table-dark ">
@@ -126,15 +116,62 @@ if(isset($_POST['submit'])){
      <?php
      
     include('server/db_connect.php');
+//Create Pagination
 
+//set page 1 as a default page
+if(isset($_GET['page'])&&!empty($_GET['page'])){
+  $currentPage=(int)strip_tags($_GET['page']);
+}else{
+  $currentPage=1;
+}
+
+/*
+if($currentPage<=0){
+  throw new Exception('Numero de page Invalide');
+}
+*/
+//count the number of data into the database
+$count =(int)$conn->query('SELECT COUNT(id) FROM students')->fetch(PDO::FETCH_NUM)[0];
+
+//set the limit per page
+$perPage = 50;
+// avoid the decimal number for the pagination
+$pages = ceil($count / $perPage);
+
+//prevent the user to put unexisting page
+
+if($currentPage > $pages){
+ throw new Exception('Numero de page Invalide');
+}
+
+//calcul du premier article
+$premier = ($currentPage * $perPage)-$perPage;
+
+
+
+
+//increment the number after pagination 
+$compter=1;
+
+//we add the initialize value $compter we add it with the current page minus 1 and multiply it with number of article per page
+$i=$compter+($currentPage -1)*$perPage;
 // retrieve data from the database
-    $i=1;
-    $sql="SELECT * FROM students ORDER BY nom ASC ";
-    $results=$conn->query($sql);
+    $sql='SELECT * FROM students ORDER BY nom,prenom ASC LIMIT :premier,:perPage;';
+   $query=$conn->prepare($sql);
+    $query->bindValue(':premier',$premier,PDO::PARAM_INT);
+    $query->bindValue(':perPage',$perPage,PDO::PARAM_INT);
+    $query->execute();
+    $results=$query->fetchAll(PDO::FETCH_ASSOC);
     ?>
-    <?php foreach($results as $row): ?>
+    <?php foreach($results as $row):
+    
+     
+      ?>
+      
 <tr>
-<td><?php echo $i++; ?> </td>
+ 
+<td><?php echo $i++;?> </td>
+
 <td class="text-capitalize"><?php echo $row["prenom"];?></td>
 <td class="text-capitalize"><?php echo $row["nom"];?></td>
 <td class="text-capitalize"><?php echo $row["section"];?></td>
@@ -147,8 +184,26 @@ if(isset($_POST['submit'])){
 </tr>
 
 
-    <?php endforeach;?>
-  
+    <?php endforeach;
+   
+    ?>
+
+   <nav class="mt-3">
+   <ul class="pagination">
+    <li class="page-item <?=($currentPage==1)?"disabled ":"" ?>">
+      <a href="?page=<?=$currentPage -1?>" class="page-link">Precedente</a>
+    </li>
+    <?php for($page=1;$page<=$pages;$page++):?>
+    <li class="page-item <?= ($currentPage ==$page)?"active":""?>">
+      <a href="?page=<?=$page ?>" class="page-link"><?=$page?></a>
+    </li>
+    <?php endfor ?>
+    <li class="page-item">
+      <a href="?page=<?=$currentPage + 1?>" class="page-link <?=($currentPage==$pages)?"disabled ":"" ?>">Suivante</a>
+    </li>
+   </ul>
+
+   </nav>
 
      </tbody>
 </table >

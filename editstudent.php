@@ -33,17 +33,16 @@
         <?php
         
 include('server/db_connect.php');
-$sql="SELECT * FROM students WHERE id='$_GET[num]'";
-$results=mysqli_query($conn,$sql);
-$row = mysqli_fetch_array($results);
+$sql=$conn->query("SELECT * FROM students WHERE id='$_GET[num]'");
+$row = $sql->fetch(PDO::FETCH_ASSOC);
         ?>
 
-        <main class="container min-vh-100 mt-3 d-flex justify-content-center align-items-center ">
+        <main class="container min-vh-100 mt-5 d-flex justify-content-center align-items-center ">
         
    
 
 
-        <form class="row g-3 mt-2 p-3 border " action="server/edit.php" method="post" enctype="multipart/form-data">
+        <form class="row g-3 mt-5 p-4 border " action="server/edit.php" method="post" enctype="multipart/form-data">
          <h2> Editer l'information d'un Eleve </h2>
          
         <div class="col-md-5">
@@ -56,7 +55,7 @@ $row = mysqli_fetch_array($results);
     <input type="text" class="form-control" id="nom" name="nom" value="<?=$row["nom"] ?>">
   </div>
 
-  <div class="col-5">
+  <div class="col-md-5">
     <label for="inputDate" class="form-label">Date de Naissance</label>
     <input type="Date" class="form-control" id="Date" name="date" value="<?=$row["birthday"] ?>">
   </div>
@@ -66,7 +65,7 @@ $row = mysqli_fetch_array($results);
     <input type="text" class="form-control" id="place" name="place" value="<?=$row["lieu_de_naissance"] ?>">
   </div>
 
-  <div class="col-5">Sexe</label>
+  <div class="col-md-5">Sexe</label>
     <select name="sexe" id="inputsexe" class="form-select">
     <option  selected>-----Choisir le Sexe-----</option>
       <option value="Masculin"
@@ -86,7 +85,7 @@ $row = mysqli_fetch_array($results);
   </div>
  
  
-  <div class="col-5">
+  <div class="col-md-5">
     <label for="inputreligion" class="form-label">Religion</label>
     <select id="inputState" name="religion" class="form-select">
     <option value="" selected>-----Choisir la Religion-----</option>
@@ -111,7 +110,7 @@ $row = mysqli_fetch_array($results);
     </select>
   </div>
 
-  <div class="col-5">
+  <div class="col-md-5">
     <label for="inputsection" class="form-label">Section</label>
     <select id="inputSection" name="section" class="form-select">
     <option value="" selected>-----Choisir la Section-----</option>
@@ -142,7 +141,7 @@ $row = mysqli_fetch_array($results);
     </select>
   </div>
  
-  <div class="col-5">
+  <div class="col-md-5">
     <label for="inputname" class="form-label">Prenom du Pere</label>
     <input type="text" class="form-control" id="fathername" name="fathername" value="<?=$row["prenom_du_pere"] ?>">
   </div>
@@ -158,13 +157,13 @@ $row = mysqli_fetch_array($results);
   </div>
 
 
-  <div class="col-5">
+  <div class="col-md-5">
     <label for="inputprofession" class="form-label">Profession</label>
     <input type="text" class="form-control" id="profession" name="profession" value="<?=$row["profession"] ?>">
   </div>
 
 
-  <div class="col-5">
+  <div class="col-md-5">
     <label for="inputAddress" class="form-label">Adresse</label>
     <input type="text" class="form-control" id="Address" name="address" value="<?=$row["adresse"] ?>">
   </div>
@@ -172,17 +171,17 @@ $row = mysqli_fetch_array($results);
 
 
   
-  <div class="col-5">
+  <div class="col-md-5">
     <label for="inputphone" class="form-label">Telephone</label>
     <input type="text" class="form-control" id="phone" name="phone" value="<?=$row["telephone"] ?>">
   </div>
 
-  <div class="col-5">
+  <div class="col-md-5">
     <label for="inputobs" class="form-label">Observation</label>
     <input type="text" class="form-control" id="observation" name="observation" value="<?=$row["observation"] ?>">
   </div>
 
-  <div class="col-5">
+  <div class="col-md-5">
     <label for="inputannee" class="form-label">Annee Scolaire</label>
     <input type="text" class="form-control" id="scolaire" name="scolaire" value="<?=$row["scolaire"] ?>">
   </div>
@@ -203,11 +202,11 @@ $row = mysqli_fetch_array($results);
         </main>
 
 
-        <footer>
-            <!-- place footer here -->
+        <footer class=" bg-dark">
+<div class="container "></div>
 
 
-        </footer>
+</footer>
         <!-- Bootstrap JavaScript Libraries -->
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

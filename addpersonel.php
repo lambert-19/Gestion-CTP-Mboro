@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Ajouter un eleve</title>
+        <title>Ajouter un membre du Personnel</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -29,10 +29,11 @@
             ?>
             
         </header>
+        <div class="wrapper">
         <main class="container min-vh-100 mt-5 d-flex justify-content-center align-items-center ">
         
-        <form class="row g-3 mt-5 p-4 border " action="server/add.php" method="post" enctype="multipart/form-data">
-         <h2> Ajouter un élève </h2>
+        <form class="row g-3 mt-5 p-4 border " action="server/" method="post" enctype="multipart/form-data">
+         <h2> Ajouter un membre du Personnel </h2>
          <?php 
                 if(isset($_SESSION['error']))
                 {?>
@@ -69,7 +70,7 @@
 
   <div class="col-md-5">
     <label for="inputDate" class="form-label">Date de Naissance</label>
-    <input type="Date" class="form-control" id="Date" name="date">
+    <input type="Date" class="form-control" id="Date" name="birthday">
   </div>
 
   <div class="col-md-5">
@@ -95,59 +96,45 @@
     </select>
   </div>
 
-  <div class="col-md-5">
-    <label for="inputsection" class="form-label">Section</label>
-    <select id="inputSection" name="section" class="form-select">
-    <option value="" selected>-----Choisir la Section-----</option>
-      <option value="Petite" >Petite</option>
-      <option value="Moyenne">Moyenne</option>
-      <option value="Grande">Grande</option>
-    </select>
-  </div>
  
   <div class="col-md-5">
-    <label for="inputname" class="form-label">Prenom du Pere</label>
-    <input type="text" class="form-control" id="fathername" name="fathername">
+    <label for="inputmatricule" class="form-label">Matricule</label>
+    <input type="text" class="form-control" id="matricule" name="matricule">
   </div>
 
   <div class="col-md-5">
-    <label for="inputmother" class="form-label">Prenom de la Mère </label>
-    <input type="text" class="form-control" id="motherfirstname" name="motherfirstfathername">
-  </div>
-
-  <div class="col-md-5">
-    <label for="inputCity" class="form-label">Nom de la Mère</label>
-    <input type="text" class="form-control" id="motherlastname" name="motherlastname">
+    <label for="inputFonction" class="form-label">Fonction</label>
+    <input type="text" class="form-control" id="fonction" name="fonction">
   </div>
 
 
   <div class="col-md-5">
-    <label for="inputprofession" class="form-label">Profession</label>
-    <input type="text" class="form-control" id="profession" name="profession">
+    <label for="inputgrade" class="form-label">Grade</label>
+    <input type="text" class="form-control" id="grade" name="grade">
   </div>
 
 
   <div class="col-md-5">
-    <label for="inputAddress" class="form-label">Adresse</label>
-    <input type="text" class="form-control" id="Address" name="address" >
+    <label for="inputDate" class="form-label">Date d'entre dans l'enseignement</label>
+    <input type="Date" class="form-control" id="entree" name="entree">
   </div>
 
 
 
   
   <div class="col-md-5">
-    <label for="inputphone" class="form-label">Telephone</label>
-    <input type="text" class="form-control" id="phone" name="phone">
+    <label for="inputDate" class="form-label">Date de prise de service</label>
+    <input type="Date" class="form-control" id="prisedeservice" name="prisedeservice">
   </div>
 
   <div class="col-md-5">
-    <label for="inputobs" class="form-label">Observation</label>
-    <input type="text" class="form-control" id="observation" name="observation">
+    <label for="inputDate" class="form-label">Date d'affectation</label>
+    <input type="Date" class="form-control" id="affectation" name="affectation">
   </div>
 
   <div class="col-md-5">
-    <label for="inputannee" class="form-label">Annee Scolaire</label>
-    <input type="text" class="form-control" id="scolaire" name="scolaire">
+    <label for="inputannee" class="form-label">Diplome Obtenu</label>
+    <input type="text" class="form-control" id="diplome" name="diplome">
   </div>
 
   <div class="photo">
@@ -165,6 +152,9 @@
 
         </main>
 
+
+        </div>
+        
 
         <footer>
             <!-- place footer here -->

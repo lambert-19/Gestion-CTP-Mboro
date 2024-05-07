@@ -33,11 +33,11 @@ empty($phone) || empty($scolaire)|| empty($photo)
     exit();
 }
 
-$checkuser="SELECT * FROM students WHERE prenom='$prenom' AND nom='$nom' AND birthday='$date' AND lieu_de_naissance='$place'
-AND sexe='$sexe' AND religion='$religion' AND prenom_du_pere='$fathername' AND prenom_de_la_mere='$mothername' AND nom_de_la_mere='$lastname'";
-$results=mysqli_query($conn,$checkuser);
-$rowCount=mysqli_num_rows($results);
-if($rowCount>0){
+$checkuser=$conn->prepare("SELECT * FROM students WHERE prenom='$prenom' AND nom='$nom' AND birthday='$date' AND lieu_de_naissance='$place'
+AND sexe='$sexe' AND religion='$religion' AND prenom_du_pere='$fathername' AND prenom_de_la_mere='$mothername' AND nom_de_la_mere='$lastname' AND scolaire='$scolaire'");
+$checkuser->execute();
+$row=$checkuser->rowCount();
+if($row>0){
     $_SESSION['error']="      Cet élève est déja dans les données.";
     header("Location:../addStudent.php");
     exit();
@@ -46,9 +46,27 @@ if($rowCount>0){
 
     $sql="INSERT into students (prenom,nom,birthday,lieu_de_naissance,sexe,religion,section,prenom_du_pere,prenom_de_la_mere,
     nom_de_la_mere,profession,adresse,telephone,observation,scolaire,photo) 
-    values('$prenom','$nom','$date','$place','$sexe','$religion','$section','$fathername','$mothername','$lastname','$profession','$address','$phone','$observation','$scolaire','$photo');";
+    values(:prenom,:nom,:date,:place,:sexe,:religion,:section,:fathername,:mothername,:lastname,:profession,:address,:phone,:observation,:scolaire,:photo)";
 
-    $result = mysqli_query($conn, $sql);
+    $result = $conn->prepare($sql);
+    $data =[
+     'prenom'=>$prenom,
+     'nom'=>$nom,
+     'date'=>$date,
+     'place'=>$place,
+     'sexe'=>$sexe,
+     'religion'=>$religion,
+     'section'=>$section,
+     'fathername'=>$fathername,
+     'mothername'=>$mothername,
+     'lastname'=>$lastname,
+     'profession'=>$profession,
+     'address'=>$address,
+     'phone'=>$phone,
+     'observation'=>$observation,
+     'scolaire'=>$scolaire,
+     'photo'=>$photo,
+    ];
     echo
         $_SESSION['success']="<span>L'élève a été enregistré avec success</span>";
         header("Location:../addStudent.php");

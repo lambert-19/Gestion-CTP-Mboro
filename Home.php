@@ -18,6 +18,9 @@
         />
         <link href="logo/1-0.jpg"  rel="logo icon" title="Logo" type="image/jpg">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/home.css">
     </head>
 
@@ -25,13 +28,20 @@
         <header>
             <!-- place navbar here -->
         <?php include 'header.php';?>
+
+        
         </header>
 
 
-        <main>
+        <main class="container overflow-hidden text-center  ">
 
+        
+   <aside id="aside">
+
+
+   </aside>
    
-        <div class="container overflow-hidden text-center ">
+        <div class="carte align-items-center ">
   <div class="row gx-5">
     <div class="col-3">
     <a href="addStudent.php"><div class="frame p-4 "><i class="bi bi-person-plus-fill "></i><p>Ajouter un élève</p> </div></a>
@@ -40,9 +50,12 @@
      <a href="listedeseleves.php"><div class="frame p-4 "><i class="bi bi-person-fill"></i> <p>liste des élèves </p></div></a> 
     </div>
     <div class="col-3">
-     <a href=""> <div class="frame p-4 "><i class="bi bi-person-plus-fill "></i><p>Ajouter un élève</p></div> </a> 
+     <a href="addpersonel.php"> <div class="frame p-4 "><i class="bi bi-person-plus-fill "></i><p>Ajouter un Membre du Personnel</p></div> </a> 
     </div>
     
+    <div class="col-3">
+     <a href=""> <div class="frame p-4 "><i class="bi bi-person-fill "></i><p>liste du Personnel</p></div> </a> 
+    </div>
   </div>
 </div>
 
